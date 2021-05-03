@@ -37,21 +37,29 @@ const siteContent = {
   },
 };
 
+var print = (x) => {console.log(x)}
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 let ctaText = document.querySelector(".cta-text h1")
 let ctaButton = document.querySelector('.cta-text button');
-let ctaImg = document.getElementById('cta-img')
+let ctaImg = document.getElementById('cta-img');
+let topContent = document.querySelector('.top-content');
+let middleImg = document.querySelector('.middle-img');
 
-logo.setAttribute('src', siteContent["nav"]["img-src"])
-ctaImg.setAttribute('src', siteContent.cta['img-src'])
-ctaText.textContent = siteContent.cta.h1
-ctaButton.textContent = siteContent.cta.button
+logo.setAttribute('src', siteContent["nav"]["img-src"]);
+ctaImg.setAttribute('src', siteContent.cta['img-src']);
+ctaText.textContent = siteContent.cta.h1;
+ctaButton.textContent = siteContent.cta.button;
+topContent.children[0].children[0].textContent = siteContent["main-content"]['features-h4'];
+topContent.children[0].children[1].textContent = siteContent['main-content']['features-content'];
+topContent.children[1].children[0].textContent = siteContent['main-content']['about-h4'];
+topContent.children[1].children[1].textContent = siteContent['main-content']['about-content'];
+middleImg.setAttribute('src', siteContent['main-content']['middle-img-src']);
 
-let navBar = document.querySelector('nav')
+let navBar = document.querySelector('nav');
 for (item in siteContent.nav) {
   if (item.includes('nav-item')){
-    navBar.innerHTML += `<a href="#">${siteContent.nav[item]}</a>\n`
+    navBar.innerHTML += `<a href="#">${siteContent.nav[item]}</a>\n`;
   }
 }
 
