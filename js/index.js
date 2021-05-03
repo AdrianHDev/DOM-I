@@ -46,7 +46,10 @@ let ctaButton = document.querySelector('.cta-text button');
 let ctaImg = document.getElementById('cta-img');
 let topContent = document.querySelector('.top-content');
 let middleImg = document.querySelector('.middle-img');
-let bottomContent = document.querySelector('.bottom-content')
+let bottomContent = document.querySelector('.bottom-content');
+let contactContent = document.querySelector('.contact');
+let copyrightInfo = document.querySelector('footer p')
+let navLinks = document.querySelector('nav')
 
 logo.setAttribute('src', siteContent["nav"]["img-src"]);
 ctaImg.setAttribute('src', siteContent.cta['img-src']);
@@ -58,27 +61,49 @@ topContent.children[1].children[0].textContent = siteContent['main-content']['ab
 topContent.children[1].children[1].textContent = siteContent['main-content']['about-content'];
 middleImg.setAttribute('src', siteContent['main-content']['middle-img-src']);
 
-let currentItemDivisor = -1
-let currentItem = -1
+let currentItemDivisor = -1;
+let currentItem = -1;
 
 for (let i = 5; i < Object.keys(siteContent["main-content"]).length; i++) {
-  let currentContent = siteContent['main-content'][Object.keys(siteContent['main-content'])[i]]
-  currentItem += 1
+  let currentContent = siteContent['main-content'][Object.keys(siteContent['main-content'])[i]];
+  currentItem += 1;
   if(Number.isInteger((i - 5) / 2)) {
-    currentItemDivisor += 1
-    currentItem = 0
+    currentItemDivisor += 1;
+    currentItem = 0;
   }
-  console.log(currentItemDivisor) 
+  console.log(currentItemDivisor);
 
   
-  bottomContent.children[currentItemDivisor].children[currentItem].textContent = currentContent
+  bottomContent.children[currentItemDivisor].children[currentItem].textContent = currentContent;
 }
 
-navBar.innerHTML = ''
-for (item in siteContent.nav) {
+contactIterator = -1
+for (const item in siteContent.contact) {
+  contactIterator++
+  console.log(contactContent.children[contactIterator].textContent = siteContent.contact[item])
+}
+
+navBar.innerHTML = '';
+for (const item in siteContent.nav) {
   if (item.includes('nav-item')){
     navBar.innerHTML += `<a href="#test" aria-label='${item}'>${siteContent.nav[item]}</a>\n`;
   }
 }
 
+const yepNode = document.createElement('a');
+yepNode.href = '#yep'
+yepNode.innerText = 'Yep!'
+const nopeNode = document.createElement('a')
+nopeNode.href = '#nope';
+nopeNode.innerText = 'Nope!'
 
+console.log(navLinks)
+copyrightInfo.innerHTML = siteContent.footer.copyright
+
+navBar.appendChild(yepNode)
+navBar.prepend(nopeNode)
+
+for (let i of navLinks.children){
+  console.log(i)
+  i.style.color = 'green'
+}
