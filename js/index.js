@@ -40,11 +40,13 @@ const siteContent = {
 var print = (x) => {console.log(x)}
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
+let navBar = document.querySelector('nav');
 let ctaText = document.querySelector(".cta-text h1")
 let ctaButton = document.querySelector('.cta-text button');
 let ctaImg = document.getElementById('cta-img');
 let topContent = document.querySelector('.top-content');
 let middleImg = document.querySelector('.middle-img');
+let bottomContent = document.querySelector('.bottom-content')
 
 logo.setAttribute('src', siteContent["nav"]["img-src"]);
 ctaImg.setAttribute('src', siteContent.cta['img-src']);
@@ -56,10 +58,26 @@ topContent.children[1].children[0].textContent = siteContent['main-content']['ab
 topContent.children[1].children[1].textContent = siteContent['main-content']['about-content'];
 middleImg.setAttribute('src', siteContent['main-content']['middle-img-src']);
 
-let navBar = document.querySelector('nav');
+let currentItemDivisor = -1
+let currentItem = -1
+
+for (let i = 5; i < Object.keys(siteContent["main-content"]).length; i++) {
+  let currentContent = siteContent['main-content'][Object.keys(siteContent['main-content'])[i]]
+  currentItem += 1
+  if(Number.isInteger((i - 5) / 2)) {
+    currentItemDivisor += 1
+    currentItem = 0
+  }
+  console.log(currentItemDivisor) 
+
+  
+  bottomContent.children[currentItemDivisor].children[currentItem].textContent = currentContent
+}
+
+navBar.innerHTML = ''
 for (item in siteContent.nav) {
   if (item.includes('nav-item')){
-    navBar.innerHTML += `<a href="#">${siteContent.nav[item]}</a>\n`;
+    navBar.innerHTML += `<a href="#test" aria-label='${item}'>${siteContent.nav[item]}</a>\n`;
   }
 }
 
