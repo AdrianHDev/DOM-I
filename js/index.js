@@ -48,8 +48,8 @@ let topContent = document.querySelector('.top-content');
 let middleImg = document.querySelector('.middle-img');
 let bottomContent = document.querySelector('.bottom-content');
 let contactContent = document.querySelector('.contact');
-let copyrightInfo = document.querySelector('footer p')
-let navLinks = document.querySelector('nav')
+let copyrightInfo = document.querySelector('footer p');
+let navLinks = document.querySelector('nav');
 
 logo.setAttribute('src', siteContent["nav"]["img-src"]);
 ctaImg.setAttribute('src', siteContent.cta['img-src']);
@@ -79,8 +79,8 @@ for (let i = 5; i < Object.keys(siteContent["main-content"]).length; i++) {
 
 contactIterator = -1
 for (const item in siteContent.contact) {
-  contactIterator++
-  console.log(contactContent.children[contactIterator].textContent = siteContent.contact[item])
+  contactIterator++;
+  console.log(contactContent.children[contactIterator].textContent = siteContent.contact[item]);
 }
 
 navBar.innerHTML = '';
@@ -91,19 +91,19 @@ for (const item in siteContent.nav) {
 }
 
 const yepNode = document.createElement('a');
-yepNode.href = '#yep'
-yepNode.innerText = 'Yep!'
-const nopeNode = document.createElement('a')
+yepNode.href = '#yep';
+yepNode.innerText = 'Yep!';
+const nopeNode = document.createElement('a');
 nopeNode.href = '#nope';
-nopeNode.innerText = 'Nope!'
+nopeNode.innerText = 'Nope!';
 
-console.log(navLinks)
-copyrightInfo.innerHTML = siteContent.footer.copyright
+console.log(navLinks);
+copyrightInfo.innerHTML = siteContent.footer.copyright;
 
-navBar.appendChild(yepNode)
-navBar.prepend(nopeNode)
+navBar.appendChild(yepNode);
+navBar.prepend(nopeNode);
 
 for (let i of navLinks.children){
-  console.log(i)
-  i.style.color = 'green'
+  console.log(i);
+  i.style.color = 'green';
 }
